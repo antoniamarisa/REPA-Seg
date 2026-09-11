@@ -1,0 +1,27 @@
+.venv
+.vscode
+__pycache__
+
+# exclude the single example .png files 
+analysis/qualitative/tc202_tc203/failure
+analysis/qualitative/tc202_tc203/success
+
+
+qualitative_analysis
+cknna_analysis
+main_analysis
+
+
+slurm/
+analysis/
+
+*.pth
+
+
+docs/*
+
+*.npy
+
+.env
+
+
