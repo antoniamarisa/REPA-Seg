@@ -102,7 +102,7 @@ sbatch slurm/jobs/runs/tc203_r1_sl2_final_ep200.sh
 ```
 
 If you only want to do test runs (use subset of ADE20K, 8 training epochs, save every 2 checkpoints)
-- Uses flags: `--test-run \` , (`--epochs 8 \`) and c(`--save-ckpt-every 2 \`)
+- Uses flags: `--test-run \` , (`--epochs 8 \`) and (`--save-ckpt-every 2 \`)
 ```bash
 sbatch slurm/jobs/test_runs/test_tc202_nr_final_ep200.sh
 sbatch slurm/jobs/test_runs/test_tc203_r1_sl2_final_ep200.sh

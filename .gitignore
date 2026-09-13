@@ -6,19 +6,9 @@ __pycache__
 analysis/qualitative/tc202_tc203/failure
 analysis/qualitative/tc202_tc203/success
 
-
-qualitative_analysis
-cknna_analysis
-main_analysis
-
-
-slurm/
-analysis/
+slurm/logs
 
 *.pth
-
-
-docs/*
 
 *.npy
 

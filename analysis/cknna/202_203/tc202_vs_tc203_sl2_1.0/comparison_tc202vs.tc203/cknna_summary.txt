@@ -1,0 +1,8 @@
+repa_run=tc203
+baseline_run=tc202
+aligned_student_layer=2
+lambda=1.00
+k=10
+baseline_cknna=0.06973925
+repa_cknna=0.14135673
+delta_cknna=+0.07161747
