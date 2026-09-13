@@ -4,9 +4,6 @@
 #SBATCH --job-name=test_tc202_nr_final_ep200
 #SBATCH --output=slurm/logs/%x-%j.out
 #SBATCH --error=slurm/logs/%x-%j.err
-#SBATCH -N1
-#SBATCH -w abakus21,abakus22
-#SBATCH --begin=2026-08-30T05:05
 #SBATCH --time=96:00:00
 
 REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"

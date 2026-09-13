@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH -p Abaki
 #SBATCH --qos=abaki
-#SBATCH -w abakus22
 #SBATCH --job-name=tc204_r1_sl2_final_ep200
 #SBATCH --output=slurm/logs/%x-%j.out
 #SBATCH --error=slurm/logs/%x-%j.err
