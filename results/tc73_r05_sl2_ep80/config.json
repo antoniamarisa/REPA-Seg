@@ -1,0 +1,204 @@
+{
+  "config": {
+    "data_root": "/home/h/haerlea/BIG/datasets/ade20k/ADEChallengeData2016",
+    "runs_root": "/home/h/haerlea/BA/runs",
+    "exp_name": "tc73_r05_sl2_ep80",
+    "device": "cuda",
+    "seed": 18,
+    "num_workers": 4,
+    "horizontal_flip": true,
+    "color_jitter": true,
+    "augmentation_strategy": "baseline",
+    "test_run": false,
+    "epochs": 80,
+    "batch_size": 16,
+    "lr_backbone": 5e-05,
+    "lr_head": 0.001,
+    "weight_decay": 0.05,
+    "scheduler": "poly_warmup",
+    "warmup_epochs": 5,
+    "resume": null,
+    "save_ckpt_every": 10,
+    "backbone_model": "timm/vit_small_patch16_224.augreg_in21k_ft_in1k",
+    "pretrained": true,
+    "img_size": 448,
+    "num_classes": 150,
+    "head_type": "linear",
+    "patch_size": 14,
+    "embedding_dim": 384,
+    "n_heads": 6,
+    "n_layers": 12,
+    "mlp_ratio": 4.0,
+    "dropout": 0.0,
+    "att_dropout": 0.0,
+    "drop_path": 0.05,
+    "use_repa": true,
+    "repa_proj": "3l-mlp-silu",
+    "repa_lambda": 0.5,
+    "repa_teacher": "facebook/dinov2-base",
+    "repa_teacher_layer": -1,
+    "normalized_last_teacher_layer": true,
+    "normalized_last_student_layer": false,
+    "repa_student_layer": 2,
+    "lr_repa": 0.0001,
+    "repa_decay_start": null,
+    "repa_decay_end": null,
+    "interpolation_target": "larger"
+  },
+  "time": "2026-09-04T04:31:05.084888",
+  "slurm_job_id": "217124",
+  "model_info": {
+    "patch_size": 16
+  },
+  "transformations": {
+    "train": {
+      "reference_resize": {
+        "reference_scale": [
+          1792,
+          448
+        ],
+        "ratio_range": [
+          0.75,
+          2.0
+        ],
+        "keep_ratio": true,
+        "image_interpolation": "bilinear",
+        "mask_interpolation": "nearest"
+      },
+      "albumentation": {
+        "__version__": "2.0.8",
+        "transform": {
+          "__class_fullname__": "Compose",
+          "p": 1.0,
+          "transforms": [
+            {
+              "__class_fullname__": "PadIfNeeded",
+              "p": 1.0,
+              "border_mode": 0,
+              "fill": [
+                128.0,
+                128.0,
+                128.0
+              ],
+              "fill_mask": 255.0,
+              "min_height": 448,
+              "min_width": 448,
+              "pad_height_divisor": null,
+              "pad_width_divisor": null,
+              "padding": 0,
+              "position": "top_left"
+            },
+            {
+              "__class_fullname__": "RandomCrop",
+              "p": 1.0,
+              "border_mode": 0,
+              "fill": 0.0,
+              "fill_mask": 0.0,
+              "height": 448,
+              "pad_if_needed": false,
+              "pad_position": "center",
+              "width": 448
+            },
+            {
+              "__class_fullname__": "HorizontalFlip",
+              "p": 0.5
+            },
+            {
+              "__class_fullname__": "ColorJitter",
+              "p": 0.5,
+              "brightness": [
+                0.875,
+                1.125
+              ],
+              "contrast": [
+                0.5,
+                1.5
+              ],
+              "hue": [
+                -0.05,
+                0.05
+              ],
+              "saturation": [
+                0.5,
+                1.5
+              ]
+            },
+            {
+              "__class_fullname__": "Normalize",
+              "p": 1.0,
+              "max_pixel_value": 255.0,
+              "mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "normalization": "standard",
+              "std": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "__class_fullname__": "ToTensorV2",
+              "p": 1.0,
+              "transpose_mask": false
+            }
+          ],
+          "bbox_params": null,
+          "keypoint_params": null,
+          "additional_targets": {
+            "valid_mask": "mask"
+          },
+          "is_check_shapes": true
+        }
+      }
+    },
+    "val": {
+      "inference": "single_scale_sliding_window",
+      "minimum_short_side": 448,
+      "window_size": 448,
+      "window_stride": 416,
+      "window_overlap": 32,
+      "window_batch_size": 4,
+      "normalization": {
+        "__version__": "2.0.8",
+        "transform": {
+          "__class_fullname__": "Compose",
+          "p": 1.0,
+          "transforms": [
+            {
+              "__class_fullname__": "Normalize",
+              "p": 1.0,
+              "max_pixel_value": 255.0,
+              "mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "normalization": "standard",
+              "std": [
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "__class_fullname__": "ToTensorV2",
+              "p": 1.0,
+              "transpose_mask": false
+            }
+          ],
+          "bbox_params": null,
+          "keypoint_params": null,
+          "additional_targets": {},
+          "is_check_shapes": true
+        }
+      }
+    }
+  },
+  "end_time": "2026-09-05T01:07:54.379395",
+  "runtime": 74210.680589,
+  "best_miou": 0.45329351766239495,
+  "best_epoch": 79
+}
